@@ -2,8 +2,7 @@ $(function() {
 	
 	let header = $('#header'),
 	headerH = $('#header').innerHeight(),
-	scrollOffset = 0,
-	heightHeader = parseInt($('#header').css('height'));
+	scrollOffset = 0;
 
 	checkScroll();
 
@@ -29,12 +28,14 @@ $(function() {
 		}
 
 
-		let elements = $('[data-scroll]');
-		let idArray = [];
-		let elementsArray = [];
+		let elements = $('[data-scroll]'),
+			idArray = [],
+			elementsArray = [];
 
 		elements.each(function(i, el) {
+
 			idArray.push($(el).data('scroll').slice(1));
+			
 			elementsArray.push(document.getElementById(idArray[i]))
 
 		});
@@ -71,7 +72,7 @@ $(function() {
 		blockId = $this.data('scroll'),
 		blockOffset = $(blockId).offset().top;
 
-		upgradeBlockOffset = blockOffset - heightHeader;
+		upgradeBlockOffset = blockOffset - headerH + 10;
 
 		$('html, body').animate({
 			scrollTop: upgradeBlockOffset
